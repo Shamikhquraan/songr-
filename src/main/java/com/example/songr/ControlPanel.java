@@ -3,23 +3,18 @@ package com.example.songr;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
+//how
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 @Controller
 public class ControlPanel {
 
-
-
-
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String splash(){
 
         return "songr";
     }
-
-
 
     @RequestMapping(value = "/album", method = RequestMethod.GET)
     public String album(Model model){
@@ -33,14 +28,11 @@ public class ControlPanel {
         model.addAttribute("albums", data);
         return "album";
     }
-
     @GetMapping("/hello")
     @ResponseBody
     public String index() {
         return "Hello World!";
     }
-
-
     @GetMapping("/capitalize/{input}")
     @ResponseBody
     public String capitalizer(@PathVariable String input){
