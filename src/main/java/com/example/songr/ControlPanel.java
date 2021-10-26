@@ -35,12 +35,16 @@ public class ControlPanel {
     @GetMapping("/listalbums")
     public String getAllAlbums(Model model){
         List<Album> listData = (ArrayList<Album>) albumRepository.findAll();
-        model.addAttribute("album", listData);
+        model.addAttribute("albums", listData);
         return "album";
     }
 
-
-
+    @PostMapping("/listalbums")
+    public RedirectView addAlbumToDB(Model model, @RequestParam(value="title") String title, @RequestParam(value="artist") String artist, @RequestParam(value="songCount") String songCount, @RequestParam(value="length") String length, @RequestParam(value="imageUrl") String imageUrl){
+        Album album = new Album(title,artist,songCount,length,imageUrl);
+        albumRepository.save(album);
+        return new RedirectView("/listalbums");
+    }
 
     @GetMapping("/hello")
     @ResponseBody
@@ -54,7 +58,5 @@ public class ControlPanel {
     public String capitalizer(@PathVariable String input){
         return input.toUpperCase(Locale.ROOT);
     }
-
-
 
 }
