@@ -13,7 +13,7 @@
 <body>
 <nav>
     <span>SONGR</span>
-    <span id="back"><a href="/">Back</a></span>
+    <span class="back"><a href="/">Back</a></span>
 </nav>
 <div class="albums">
     <div  th:each="album : ${albums}">
@@ -23,9 +23,23 @@
         <p>Length: <span th:text="${album.length}"></span></p>
 
         <img  th:src=@{${album.imageUrl}}>
-
+        <span class="back"><a href="/albumsongs">See Songs</a></span>
+        <hr>
     </div>
+
+
+
+
 </div>
-<footer><SPAN>All Rights Reserved 	&copy; Shamikh Quraan </SPAN></footer>
+
+<form action="/allalbums" method="POST">
+    <label for="title">Title:  <input type="text" name="title" id="title"> </label><br>
+    <label for="artist">Artist:  <input type="text" name="artist" id="artist"> </label><br>
+    <label for="songCount">Song Count:  <input type="text" name="songCount" id="songCount"> </label><br>
+    <label for="length">Length:  <input type="text" name="length" id="length"> </label><br>
+    <label for="imageUrl">Image URL: <input type="text" name="imageUrl" id="imageUrl"> </label><br>
+    <input type="submit" value="Add Album">
+</form>
+<footer><SPAN>All Rights Reserved 	&copy;  Shamikh Qu</SPAN></footer>
 </body>
 </html>
