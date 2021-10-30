@@ -15,10 +15,10 @@ public class SongControl {
     @GetMapping("/albumsongs")
 
     public RedirectView addSong(){
-        Song song1 = new Song("Fight Song", "7:10",1);
-        songCrud.save(song1);
-        Song song2 = new Song("Easy On Me", "9:10",2);
-        songCrud.save(song2);
+//        Song song1 = new Song("Fight Song", "7:10",1);
+//        songCrud.save(song1);
+//        Song song2 = new Song("Easy On Me", "9:10",2);
+//        songCrud.save(song2);
         return new RedirectView("/albumsong");
     }
 
