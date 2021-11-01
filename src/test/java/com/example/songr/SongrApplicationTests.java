@@ -1,38 +1,49 @@
 package com.example.songr;
 
+import com.example.songr.Model.Album;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 class SongrApplicationTests {
 
+	/*-------------class11---------*/
+	Album a=new Album("Anti","Rihanna",13,2616,"https://upload.wikimedia.org/wikipedia/en/3/32/Rihanna_-_Anti.png");
 	@Test
-	void testTitle() {
-		Album album1 = new Album("figting", "Shamikh Qu","15", "59:20", "https://upload.wikimedia.org/wikipedia/en/1/13/Alterbridge_blackbird.jpg" );
-		String title = album1.getTitle();
-		assertEquals("figting", title);
+	void testInGetter() {
+		String ExpectedTitle="Anti";
+		String ExpectedArtist="Rihanna";
+		int ExpectedSongCount=13;
+		int ExpectedLength=2616;
+		String ExpectedImageUrl="https://upload.wikimedia.org/wikipedia/en/3/32/Rihanna_-_Anti.png";
+		assertEquals(ExpectedTitle,a.getTitle());
+		assertEquals(ExpectedArtist,a.getArtist());
+		assertEquals(ExpectedSongCount,a.getSongCount());
+		assertEquals(ExpectedLength,a.getLength());
+		assertEquals(ExpectedImageUrl,a.getImageUrl());
+
 	}
 	@Test
-	void testArtist() {
-		Album album1 = new Album("watforf", "mohammad salah","13", "60:60", "https://upload.wikimedia.org/wikipedia/en/1/13/Alterbridge_blackbird.jpg" );
-		String artist = album1.getArtist();
-		assertEquals("mohammad salah", artist);
+	void testInSetter() {
+
+		a.setTitle("A");
+		a.setArtist("R");
+		a.setSongCount(1);
+		a.setLength(2);
+		a.setImageUrl("htt");
+		String ExpectedTitle="A";
+		String ExpectedArtist="R";
+		int ExpectedSongCount=1;
+		int ExpectedLength=2;
+		String ExpectedImageUrl="htt";
+
+		assertEquals(ExpectedTitle,a.getTitle());
+		assertEquals(ExpectedArtist,a.getArtist());
+		assertEquals(ExpectedSongCount,a.getSongCount());
+		assertEquals(ExpectedLength,a.getLength());
+		assertEquals(ExpectedImageUrl,a.getImageUrl());
+
 	}
-	@Test
-	void testNumber() {
-		Album album1 = new Album("PSG", "Alter","13", "59:17", "https://upload.wikimedia.org/wikipedia/en/1/13/Alterbridge_blackbird.jpg" );
-		String count = album1.getSongCount();
-		assertEquals("13", count);
-	}
-	@Test
-	void testLength() {
-		Album album1 = new Album("Blackbird", "Alter bridge","13", "59:17", "https://upload.wikimedia.org/wikipedia/en/1/13/Alterbridge_blackbird.jpg" );
-		String count = album1.getLength();
-		assertEquals("59:17", count);
-	}
-	@Test
-	void testUrl() {
-		Album album1 = new Album("real Madrid", "benzema","13", "59:17", "https://upload.wikimedia.org/wikipedia/en/1/13/Alterbridge_blackbird.jpg" );
-		String url = album1.getImageUrl();
-		assertEquals("https://upload.wikimedia.org/wikipedia/en/1/13/Alterbridge_blackbird.jpg", url);
-	}
+	/*------------------------------------------------------------------------------------------*/
 }

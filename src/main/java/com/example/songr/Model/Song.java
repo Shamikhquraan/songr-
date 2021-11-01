@@ -1,4 +1,4 @@
-package com.example.songr;
+package com.example.songr.Model;
 
 import javax.persistence.*;
 
@@ -6,26 +6,21 @@ import javax.persistence.*;
 public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     private String title;
-    private String length;
+    private int length;
     private int trackNumber;
-
     @ManyToOne
-    private Album albumSongs;
+    public Album songsAlbum;
 
-    public Song(String title, String length, int trackNumber) {
+
+    public Song(String title, int length, int trackNumber,Album songsAlbum) {
         this.title = title;
         this.length = length;
         this.trackNumber = trackNumber;
-
+        this.songsAlbum=songsAlbum;
     }
-
     public Song(){}
-
-
-
-
     public String getTitle() {
         return title;
     }
@@ -34,11 +29,11 @@ public class Song {
         this.title = title;
     }
 
-    public String getLength() {
+    public int getLength() {
         return length;
     }
 
-    public void setLength(String length) {
+    public void setLength(int length) {
         this.length = length;
     }
 

@@ -1,4 +1,5 @@
-package com.example.songr;
+package com.example.songr.Model;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -6,32 +7,22 @@ import java.util.List;
 public class Album {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String title;
 	private String artist;
-	private String songCount;
-	private String length;
-	private String imageUrl;
-	public List<Song> getAlbumSongs() {
-		return albumSongs;
-	}
-
-	public void setAlbumSongs(List<Song> albumSongs) {
-		this.albumSongs = albumSongs;
-	}
-
-	@OneToMany(mappedBy = "albumSongs")
-	List<Song> albumSongs;
-
-	public Album(){}
-	public Album(String title, String artist, String songCount, String length, String imageUrl) {
+	private int songCount;
+	private int length;
+	private String imageUrl ;
+	@OneToMany(mappedBy = "songsAlbum")
+	public List<Song> songs;
+	public Album(String title, String artist, int songCount, int length, String imageUrl) {
 		this.title = title;
 		this.artist = artist;
 		this.songCount = songCount;
 		this.length = length;
 		this.imageUrl = imageUrl;
 	}
-
+	public Album(){}
 	public String getTitle() {
 		return title;
 	}
@@ -48,19 +39,19 @@ public class Album {
 		this.artist = artist;
 	}
 
-	public String getSongCount() {
+	public int getSongCount() {
 		return songCount;
 	}
 
-	public void setSongCount(String songCount) {
+	public void setSongCount(int songCount) {
 		this.songCount = songCount;
 	}
 
-	public String getLength() {
+	public int getLength() {
 		return length;
 	}
 
-	public void setLength(String length) {
+	public void setLength(int length) {
 		this.length = length;
 	}
 
@@ -70,5 +61,13 @@ public class Album {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<header>
+  <h1>Songs Page</h1>
+  <div class="nav">
+    <a href="/">home</a>
+    <a href="albums">albums</a>
+    <a href="capitalize">capitalize</a>
+
+</header>
+<h1>This is song page</h1>
+
+<div th:each="song:${songsList}" class="img">
+  <P th:text="${song.getTitle()}"></P>
+  <P th:text="${song.getLength()}"></P>
+  <P th:text="${song.getTrackNumber()}"></P>
+</div>
+</body>
+</html>

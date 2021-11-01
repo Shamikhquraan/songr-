@@ -1,45 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/style.css" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>SONGR / Albums</title>
+    <title>Title</title>
 </head>
 <body>
-<nav>
-    <span>SONGR</span>
-    <span class="back"><a href="/">Back</a></span>
-</nav>
-<div class="albums">
-    <div  th:each="album : ${albums}">
-        <p>Title: <span th:text=${album.title}></span></p>
-        <p>Artist: <span th:text="${album.artist}"></span></p>
-        <p>Song Count: <span th:text="${album.songCount}"></span></p>
-        <p>Length: <span th:text="${album.length}"></span></p>
+<h1>album page</h1>
+<div>
+    <img th:src="${album.getImageUrl()}" >
+    <P th:text="${album.getTitle()}" ></P>
+    <P th:text="${album.getArtist()}"></P>
+    <P th:text="${album.getSongCount()}"></P>
+    <P th:text="${album.getLength()}"></P>
+    <ul>
+        <li th:each="song: ${album.songs}">
 
-        <img  th:src=@{${album.imageUrl}}>
-        <span class="back"><a href="/albumsongs">See Songs</a></span>
-        <hr>
-    </div>
-
-
-
+            <span th:text="${'Song title : '+ song.getTitle()}"></span>
+            <span th:text="${'Song track number :  '+   song.getTrackNumber()}"></span>
+            <span th:text="${'Song length :  '+song.getLength()}"></span>
+        </li>
+    </ul>
 
 </div>
-
-<form action="/myalbums" method="POST">
-    <label for="title">Title:  <input type="text" name="title" id="title"> </label><br>
-    <label for="artist">Artist:  <input type="text" name="artist" id="artist"> </label><br>
-    <label for="songCount">Song Count:  <input type="text" name="songCount" id="songCount"> </label><br>
-    <label for="length">Length:  <input type="text" name="length" id="length"> </label><br>
-    <label for="imageUrl">Image URL: <input type="text" name="imageUrl" id="imageUrl"> </label><br>
-    <input type="submit" value="Add Album">
-</form>
-<footer><SPAN>All Rights Reserved 	&copy;  Shamikh Qu</SPAN></footer>
+<div >
+    <form method="POST" action="/song">
+        <label for="titleSong">Song Title</label>
+        <input type="text"  id="titleSong"  name="title">
+        <br>
+        <label for="lengthSong">Length</label>
+        <input type="number" id="lengthSong"  name="length">
+        <br>
+        <label for="trackNumber">Song track number</label>
+        <input type="number" id="trackNumber"  name="trackNumber">
+        <br>
+        <label for="album">Album Title:</label>
+        <input type="text"  id="album" name="album" th:value="${album.title}" required readonly>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
 </body>
 </html>
